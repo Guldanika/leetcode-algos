@@ -66,6 +66,75 @@ Follow-up: вернуть индекс максимально удалённог
 Подзадача 2 (справа): дистанция = right, индекс = n - 1 — садимся в самый правый край.
 
 
+```
+from typing import List, Tuple
+
+class Solution:
+
+    def maxDistToClosestWithIndex(self, seats: List[int]) -> Tuple[int, int]:
+
+        n = len(seats)
+
+        # Подзадача 1: посадка слева
+
+        left = 0
+
+        while seats[left] == 0:
+
+            left += 1
+
+        left_result = (left, 0)
+
+        # Подзадача 2: посадка справа
+
+        right = 0
+
+        right_ind = n - 1
+
+        while seats[right_ind] == 0:
+
+            right += 1
+
+            right_ind -= 1
+
+        right_result = (right, n - 1)
+
+        # Подзадача 3: посадка посередине
+
+        mid = 0
+
+        mid_max = 0
+
+        mid_end = -1  # правый индекс лучшей серии нулей
+
+        for i in range(left, right_ind + 1):
+
+            if seats[i] == 0:
+
+                mid += 1
+
+                if mid > mid_max:
+
+                    mid_max = mid
+
+                    mid_end = i
+
+            else:
+
+                mid = 0
+
+        mid_dist = (mid_max + 1) // 2
+
+        mid_index = mid_end - mid_max + mid_dist if mid_max > 0 else -1
+
+        mid_result = (mid_dist, mid_index)
+
+        # max по кортежам сравнит сначала дистанции и вернёт индекс вместе с ней
+
+        return max(left_result, right_result, mid_result)//
+```
+
+
 
 
 
