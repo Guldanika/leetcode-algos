@@ -3,7 +3,7 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-
+        ## Устанавливаем указатели
         l,r = 0, len(s) - 1
 
         while l < r:
