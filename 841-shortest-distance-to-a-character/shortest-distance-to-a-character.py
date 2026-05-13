@@ -16,7 +16,8 @@ class Solution:
             
         # Второй проход: Справа налево
         pos = float('inf')
-        for i in range(n - 1, -1, -1):
+        #эти три числа в скобках (start, stop, step)
+        for i in range(n - 1, -1, -1):     #This range starts from the last index and moves towards the first one by stepping minus one each time. This allows us to find the closest character on the right side. 
             if s[i] == c:
                 pos = i
             # Сравниваем старое расстояние с новым и берем минимум
